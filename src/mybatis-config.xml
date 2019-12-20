@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "mybatis-3-config.dtd" >
+<configuration>
+	<!--配置properties文件位置	-->
+	<properties resource="datasource.properties"></properties>
+	<settings>
+		<setting name="logImpl" value="log4j"/>
+	</settings>
+	<!--别名配置	-->
+	<typeAliases>
+		<package name="entity"/>
+		<package name="vo"/>
+	</typeAliases>
+<plugins>
+	<!-- 配置mybatis分页插件 -->
+    <!-- com.github.pagehelper为PageHelper类所在包名 -->
+    <plugin interceptor="com.github.pagehelper.PageInterceptor">
+
+        <property name="reasonable" value="false"/>
+
+    </plugin>
+</plugins>
+	<!-- 当前应用所有环境的配置 default默认使用哪个环境配置 -->
+	<environments default="mybatis">
+		<!-- 配置一种环境配置 id当前环境配置的唯一标识符,供父标签default使用 -->
+		<environment id="mybatis">
+			<!-- 事务管理器-->
+			<transactionManager type="JDBC"></transactionManager>
+			<!-- 连接信息-->
+			<dataSource type="POOLED" >
+<!--				<property name="driver" value="com.mysql.jdbc.Driver"/>-->
+<!--				<property name="url" value="jdbc:mysql://127.0.0.1:3306/mybatis?useUnicode=true&amp;characterEncoding=utf8"/>-->
+<!--				<property name="username" value="root"/>-->
+<!--				<property name="password" value="root"/>-->
+				<property name="driver" value="${jdbc.driverClassName}"/>
+				<property name="url" value="${jdbc.url}"/>
+				<property name="username" value="${jdbc.username}"/>
+				<property name="password" value="${jdbc.password}"/>
+				 <property name="poolMaximumActiveConnections" value="300"/>
+				 <property name="poolMaximumIdleConnections" value="10"/>
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<!-- mapper文件的位置	-->
+	<mappers>
+ 		<!--<mapper resource="mapper/CommentMapper.xml"/>
+ 		<mapper resource="mapper/UserMapper.xml"/>
+ 		<mapper resource="mapper/CoursesMapper.xml"/>
+		<mapper resource="mapper/CourseTypeMapper.xml"/>
+		<mapper resource="mapper/ChapterMapper.xml"/>
+		<mapper resource="mapper/PraisesMapper.xml"/>
+		<mapper resource="mapper/ResourceMapper.xml"/>
+		<mapper resource="mapper/goldPointsMapper.xml"/>-->
+	</mappers>
+
+
+</configuration>
