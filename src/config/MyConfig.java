@@ -9,6 +9,6 @@ public class MyConfig extends WebConfigurer {
 
     @Override
     public void addViewControllers(ResourceHandlerRegistry reg) {
-        reg.addViewController("/front/front_index","/login");
+        reg.addViewController("/front/front_index","/index");
     }
 }
